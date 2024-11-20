@@ -15,7 +15,6 @@ public class SceneLoader : MonoBehaviour
     public void LoadSceneAdditive(string name)
     {
         SceneManager.LoadScene(name,LoadSceneMode.Additive);
-        Debug.Log("load scene additive");
     }
 
     public void QuitGame()
