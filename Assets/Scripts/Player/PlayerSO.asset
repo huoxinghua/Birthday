@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
   playerSpeed: 6
-  sensitivity: 5
-  balanceSpeed: 0
+  RotateSpeed: 2
+  balanceSpeed: 2
