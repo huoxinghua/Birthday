@@ -4,11 +4,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerSO playerSO;
-    [SerializeField] private Transform tray;
 
     private Vector2 _movement;
     private float _rotate;
     private float balancePos;
+    private TrayBalance _balance;
     private Rigidbody rb;
 
     private void Awake()
@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _balance = GetComponent<TrayBalance>();
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
     }
 
@@ -63,8 +65,7 @@ public class PlayerController : MonoBehaviour
     private void BalanceCakeHandler()
     {
         float angleZ = balancePos * 15f;
-        tray.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -angleZ * playerSO.balanceSpeed);
-        
+        _balance.TrayRotation(transform ,angleZ, playerSO.balanceSpeed);
     }
 
     public void BalanceInput(Vector2 mouse)
