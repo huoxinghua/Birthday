@@ -9,11 +9,15 @@ public class PlayerController : MonoBehaviour
     private float _rotate;
     private float balancePos;
     private TrayBalance _balance;
-    private Rigidbody rb;
+    private CharacterController character;
+    private GroundCheck _groundCheck;
+
+   
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        character = GetComponent<CharacterController>();
+        _groundCheck = GetComponent<GroundCheck>();
     }
 
     private void Start()
@@ -36,20 +40,16 @@ public class PlayerController : MonoBehaviour
         moveDir.Normalize();
         moveDir.y = 0f;
 
-        rb.velocity = moveDir;
-        rb.velocity *= playerSO.playerSpeed;
+            character.SimpleMove(moveDir * playerSO.playerSpeed * Time.deltaTime);
     }
 
     private void RotateHandler()
     {
         if (_rotate < 0f)
-            transform.rotation =  Quaternion.Euler(0f, playerSO.RotateSpeed, 0f);
+            transform.Rotate(0f, -playerSO.RotateSpeed, 0f);
 
         else if (_rotate > 0f)
-            transform.rotation = Quaternion.Euler(0f, -playerSO.RotateSpeed, 0f);
-
-        else
-            rb.angularVelocity = Vector3.zero;
+            transform.Rotate(0f, playerSO.RotateSpeed, 0f);
     }
 
     public void MovementInput(Vector2 input)
@@ -72,6 +72,4 @@ public class PlayerController : MonoBehaviour
     {
         balancePos = (mouse.x - (Screen.width / 2)) / (Screen.width / 2);
     }
-
-    
 }
