@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorPivot: {fileID: 2039167602006149377}
   rotationAngle: -90
-  rotationDuration: 1
+  rotationDuration: 10
   trigger: {fileID: 0}
 --- !u!1 &2039167602006149377
 GameObject:
