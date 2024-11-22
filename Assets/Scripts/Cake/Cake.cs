@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class Cake : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-
+    private PlayerController player;
     private bool _isCakeDrop;
-
-    private void Awake()
-    {
-        
-    }
 
     private void Start()
     {
         _isCakeDrop = false;
     }
 
-    void Update()
+    private void Update()
     {
-        
     }
 
     private void CakeDrop()
@@ -35,5 +28,12 @@ public class Cake : MonoBehaviour
         {
             CakeDrop();
         }
+
+        if(collision.gameObject.GetComponent<TrayBalance>() != null)
+        {
+            var parent = collision.gameObject.GetComponentInParent<TrayBalance>();
+            Debug.Log(parent.name);        }
     }
+
+    
 }

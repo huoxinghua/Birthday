@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _balance = GetComponent<TrayBalance>();
+        _balance = GetComponentInChildren<TrayBalance>();
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
     }
@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour
     private void RotateHandler()
     {
         if (_rotate < 0f)
-            transform.Rotate(0f, playerSO.RotateSpeed, 0f);
+            transform.rotation =  Quaternion.Euler(0f, playerSO.RotateSpeed, 0f);
 
         else if (_rotate > 0f)
-            transform.Rotate(0f, -playerSO.RotateSpeed, 0f);
+            transform.rotation = Quaternion.Euler(0f, -playerSO.RotateSpeed, 0f);
 
         else
             rb.angularVelocity = Vector3.zero;
