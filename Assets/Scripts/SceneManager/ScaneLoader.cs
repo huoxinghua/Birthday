@@ -12,10 +12,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
-    public void LoadSceneAdditive(string name)
-    {
-        SceneManager.LoadScene(name,LoadSceneMode.Additive);
-    }
+    //public void LoadSceneAdditive(string name)
+    //{
+    //    SceneManager.LoadScene(name,LoadSceneMode.Additive);
+    //}
 
     public void QuitGame()
     {
