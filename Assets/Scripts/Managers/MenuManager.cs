@@ -42,10 +42,16 @@ public class MenuManager : MonoBehaviour
     // Resume the game
     public void ResumeGame()
     {
+        if (pauseMenu == null)
+        {
+            return;
+        }
+
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         isPaused = false;
     }
+   
 
     public void GameOver()
     {
@@ -54,7 +60,14 @@ public class MenuManager : MonoBehaviour
     }
     private void HideControl()
     {
+       
         playerControlMenu.SetActive(false);
+    }
+
+    private void ShowControl()
+    {
+        ResumeGame();
+        playerControlMenu.SetActive(true);
     }
     void Update()
     {
