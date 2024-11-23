@@ -7,12 +7,18 @@ public class Balloon : MonoBehaviour, IFloatable
     private float initialY;
     private float initialX;
     bool isFloating = false;
+
+    
+    public bool isSpawned=false;
+
+   
     private void Awake()
     {
         initialY = transform.localPosition.y;
         initialX =transform.localPosition.x;
         isFloating = false;
     }
+   
     public void StopFloat()
     {
         isFloating = false;
@@ -21,6 +27,7 @@ public class Balloon : MonoBehaviour, IFloatable
     {
         isFloating = true;
     }
+
     public void Floating()
     {
         float newYPosition = initialY + Mathf.Sin(Time.time * floatingSpeed) * floatingHeight;
@@ -32,6 +39,14 @@ public class Balloon : MonoBehaviour, IFloatable
         if (isFloating)
         {
             Floating();
+        }
+
+    }
+    void FixedUpdate()
+    {
+        if (isSpawned)
+        {
+            this.transform.position += Vector3.up * Time.deltaTime * 2f;
         }
 
     }
