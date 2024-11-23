@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorPivot: {fileID: 2039167602006149377}
   rotationAngle: -90
-  rotationDuration: 10
+  rotationDuration: 5
   trigger: {fileID: 0}
 --- !u!4 &5487569495002349023 stripped
 Transform:

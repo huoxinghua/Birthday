@@ -10,7 +10,7 @@ public class RotateGround : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float rotation = Mathf.PingPong(Time.time * rotationSpeed, maxRotationAngle);
+        float rotation = Mathf.Sin(Time.time * rotationSpeed)* maxRotationAngle;
         rotatePart.transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 }
