@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject playerControlMenu;
     private bool isPaused = false;
     [SerializeField] private PlayerInputController inputManager;
 
@@ -51,4 +52,23 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
+    private void HideControl()
+    {
+        playerControlMenu.SetActive(false);
+    }
+    void Update()
+    {
+
+        if (AnyPlayerInput())
+        {
+            HideControl();
+        }
+    }
+
+    private bool AnyPlayerInput()
+    {
+
+        return Input.anyKeyDown;
+    }
+
 }
