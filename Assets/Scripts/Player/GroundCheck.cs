@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    [SerializeField] private LayerMask mask;
-    [SerializeField] private float slopeSpeed;
+    [SerializeField] LayerMask mask;
+    [SerializeField] float alignSpeed;
 
-    private bool isGround;
-
-    public bool IsGround => isGround;
+    private PlayerController player;
 
     private void Awake()
     {
-        
+        player = GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -23,22 +21,28 @@ public class GroundCheck : MonoBehaviour
     }
     private void GroundCheckRay()
     {
-        if(Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.01f, mask))
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 5f, mask))
         {
-            RotateWithSlope(hit.transform);
-
-            Debug.DrawLine(transform.position, transform.position - 0.5f * transform.up, Color.red);
-            isGround = true;
+            Debug.Log("hit");
+            AlignWithGround(hit);
+            player.SetRotateControl(false);
         }
         else
         {
-            isGround = false;
+            Debug.Log("Eh");
+            player.SetRotateControl(true);
         }
     }
 
-    public void RotateWithSlope(Transform objectToMatch)
+    private void AlignWithGround(RaycastHit hit)
     {
-        
-        Debug.Log("rotate!");
+        float targetAngle = Mathf.Atan2(hit.normal.x, hit.normal.y) * Mathf.Rad2Deg;
+        float currentZAngle = transform.eulerAngles.z;
+        float newZAngle = Mathf.LerpAngle(currentZAngle, -targetAngle, alignSpeed * Time.deltaTime);
+
+        Vector3 targetLookAt = hit.transform.forward;
+        Quaternion lookAt = Quaternion.LookRotation(targetLookAt);
+
+        transform.rotation = lookAt * Quaternion.Euler(0f, 0f, newZAngle);
     }
 }

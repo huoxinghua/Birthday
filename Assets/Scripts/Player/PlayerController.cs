@@ -6,18 +6,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerSO playerSO;
 
     private Vector2 _movement;
+    private Rigidbody _rb;
     private float _rotate;
+    private float _playerRotate;
     private float balancePos;
+    private bool canControlRotate;
     private TrayBalance _balance;
     private CharacterController character;
     private GroundCheck _groundCheck;
 
-   
+    public float PlayerRotate => _playerRotate;
+    public PlayerSO PlayerSO => playerSO;
 
     private void Awake()
     {
         character = GetComponent<CharacterController>();
         _groundCheck = GetComponent<GroundCheck>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -39,17 +44,21 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDir = transform.forward * _movement.y + transform.right * _movement.x;
         moveDir.Normalize();
         moveDir.y = 0f;
-
-            character.SimpleMove(moveDir * playerSO.playerSpeed * Time.deltaTime);
+        
+        _rb.velocity = moveDir;
+        _rb.velocity *= playerSO.playerSpeed * Time.deltaTime;
     }
 
     private void RotateHandler()
     {
-        if (_rotate < 0f)
-            transform.Rotate(0f, -playerSO.RotateSpeed, 0f);
+        if(canControlRotate)
+        {
+            if (_rotate < 0f)
+                transform.Rotate(0f, -playerSO.RotateSpeed * Time.deltaTime, 0f);
 
-        else if (_rotate > 0f)
-            transform.Rotate(0f, playerSO.RotateSpeed, 0f);
+            else if (_rotate > 0f)
+                transform.Rotate(0f, playerSO.RotateSpeed * Time.deltaTime, 0f);
+        }
     }
 
     public void MovementInput(Vector2 input)
@@ -71,5 +80,10 @@ public class PlayerController : MonoBehaviour
     public void BalanceInput(Vector2 mouse)
     {
         balancePos = (mouse.x - (Screen.width / 2)) / (Screen.width / 2);
+    }
+
+    public void SetRotateControl(bool value)
+    {
+        canControlRotate = value;
     }
 }

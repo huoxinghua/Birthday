@@ -5,12 +5,18 @@ using UnityEngine;
 public class Cake : MonoBehaviour
 {
     private PlayerController player;
+    private Rigidbody rb;
     private bool _isCakeDrop;
 
     public bool IsCakeDrop
     {
         get => _isCakeDrop;
         set => _isCakeDrop = value;
+    }
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -22,7 +28,8 @@ public class Cake : MonoBehaviour
     {
         if (!_isCakeDrop)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, transform.localPosition.y, 0f), 100f * Time.deltaTime);
+            
+            transform.localPosition = new Vector3(rb.velocity.x, transform.localPosition.y, 0);
         }
     }
 
