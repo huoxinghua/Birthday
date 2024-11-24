@@ -7,8 +7,9 @@ public class RotateMusicBox : MonoBehaviour
 
     [SerializeField] GameObject rotatePart;
     [SerializeField] float rotationSpeed;
+    [SerializeField] private Vector3 rotationDirection = Vector3.up;
     private void FixedUpdate()
     {
-        rotatePart.transform.Rotate(0,  rotationSpeed * Time.fixedDeltaTime, 0);
+        rotatePart.transform.Rotate(rotationDirection *rotationSpeed * Time.fixedDeltaTime);
     }
 }

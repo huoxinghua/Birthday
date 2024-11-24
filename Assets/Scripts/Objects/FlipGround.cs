@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateGround : MonoBehaviour
+public class FlipGround : MonoBehaviour
 {
     [SerializeField] GameObject rotatePart;
     [SerializeField] float rotationSpeed;

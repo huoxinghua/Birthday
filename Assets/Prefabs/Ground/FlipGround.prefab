@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7387237452132893775}
   - component: {fileID: 3037522607978248684}
   m_Layer: 0
-  m_Name: RotateGround
+  m_Name: FlipGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
