@@ -132,8 +132,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2537892992968547641, guid: ac2a702baa20d5d46be6e675604c2274,
         type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2537892992968547641, guid: ac2a702baa20d5d46be6e675604c2274,
+        type: 3}
       propertyPath: m_Constraints
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2537892992968547641, guid: ac2a702baa20d5d46be6e675604c2274,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 269225392147762192, guid: ac2a702baa20d5d46be6e675604c2274,
         type: 3}
@@ -353,9 +363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9665f436165c77848b98ead0714ce1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatePart: {fileID: 0}
-  rotationSpeed: 1
-  maxRotationAngle: 5
 --- !u!4 &585205207
 Transform:
   m_ObjectHideFlags: 0
@@ -883,6 +890,11 @@ PrefabInstance:
       propertyPath: trigger
       value: 
       objectReference: {fileID: 837299242}
+    - target: {fileID: 6746544160867784699, guid: 1fe93c951bdcfbf4da4c2fa81dc95186,
+        type: 3}
+      propertyPath: trayBalanceValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7085543911377031201, guid: 1fe93c951bdcfbf4da4c2fa81dc95186,
         type: 3}
       propertyPath: m_Layer
@@ -892,6 +904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423599093744911477, guid: 1fe93c951bdcfbf4da4c2fa81dc95186,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7734183570691021436, guid: 1fe93c951bdcfbf4da4c2fa81dc95186,
         type: 3}

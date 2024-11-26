@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController character;
     private GroundCheck _groundCheck;
 
+    public Rigidbody RB => _rb;
+
     public float PlayerRotate => _playerRotate;
     public PlayerSO PlayerSO => playerSO;
 
