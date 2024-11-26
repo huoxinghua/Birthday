@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
     private PlayerInput inputActions;
     private PlayerController controller;
-
+    public PlayerInput InputActions
+    {
+        get { return inputActions; }
+    }
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
