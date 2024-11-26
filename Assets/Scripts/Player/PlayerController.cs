@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovementHandler()
     {
-        Vector3 moveDir = transform.forward * _movement.y + transform.right * _movement.x;
+        Vector3 moveDir = new Vector3(_movement.x, 0f, _movement.y);
         moveDir.Normalize();
         moveDir.y = 0f;
         
