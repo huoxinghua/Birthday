@@ -47,8 +47,7 @@ public class PlayerController : MonoBehaviour
         moveDir.Normalize();
         moveDir.y = 0f;
         
-        _rb.velocity = moveDir;
-        _rb.velocity *= playerSO.playerSpeed * Time.deltaTime;
+        transform.Translate(moveDir * playerSO.playerSpeed * Time.deltaTime);
     }
 
     private void RotateHandler()
@@ -76,7 +75,7 @@ public class PlayerController : MonoBehaviour
     private void BalanceCakeHandler()
     {
         float angleZ = balancePos * 15f;
-        _balance.TrayRotation(transform ,angleZ, playerSO.balanceSpeed);
+        _balance.TrayRotation(transform ,angleZ);
     }
 
     public void BalanceInput(Vector2 mouse)

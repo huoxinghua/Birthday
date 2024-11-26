@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class Cake : MonoBehaviour
@@ -9,6 +6,7 @@ public class Cake : MonoBehaviour
     private PlayerController player;
     private Rigidbody rb;
     private bool _isCakeDrop;
+    public Vector3 dropPosition;
 
     public bool IsCakeDrop
     {
@@ -24,19 +22,31 @@ public class Cake : MonoBehaviour
     private void Start()
     {
         player = GetComponentInParent<PlayerController>();
+        
     }
 
     private void Update()
     {
-        
+        if ((!_isCakeDrop))
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0f);
+        }
     }
 
     public void CakeDrop()
     {
         _isCakeDrop = true;
         transform.parent = null;
-        rb.isKinematic = false;
-        rb.useGravity = true;
+        transform.position = transform.localPosition;
+        
         Debug.Log("Drop the cake!");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("GroundMovement"))
+        {
+            Debug.Log("Lose! You can not bring your cake to your wife anymore");
+        }
     }
 }

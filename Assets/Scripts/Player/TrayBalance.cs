@@ -5,15 +5,12 @@ using UnityEngine;
 public class TrayBalance : MonoBehaviour
 {
     [SerializeField] private BoxCollider trigger;
-    [SerializeField] private float trayBalanceValue;
 
     private Cake _cake;
 
-    public void TrayRotation(Transform player, float angle, float rotateSpeed)
+    public void TrayRotation(Transform player, float angle)
     {
-        transform.localRotation = Quaternion.Euler(0f, 0f, -angle * rotateSpeed * Time.deltaTime);
-
-        _cake.transform.localPosition += new Vector3(angle * trayBalanceValue * 0.01f, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(0f, 0f, -angle);
     }
 
     private void OnTriggerStay(Collider other)
