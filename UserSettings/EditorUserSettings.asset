@@ -9,6 +9,9 @@ EditorUserSettings:
       value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
       flags: 0
     RecentlyUsedSceneGuid-1:
+<<<<<<< HEAD
+      value: 0505010754035e0b0c5c587114225e44434f4a287c7c23637c711c6be3e26c39
+=======
       value: 0707555f50055808580c0e2041200e444f4f1a72782b7f3275704931b6b3313a
       flags: 0
     RecentlyUsedSceneGuid-2:
@@ -16,6 +19,7 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedSceneGuid-3:
       value: 5b080402525159595c5d5f2345720e444f15197e7f7b25337b284863b0b33568
+>>>>>>> origin/Xinghua
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
