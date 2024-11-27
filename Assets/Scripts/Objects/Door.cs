@@ -44,6 +44,7 @@ public class Door : MonoBehaviour
     }
     public void OpenDoor()
     {
+        Debug.Log("open door");
         if (!isRotating)
         {
           
