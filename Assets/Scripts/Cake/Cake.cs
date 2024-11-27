@@ -40,6 +40,9 @@ public class Cake : MonoBehaviour
         transform.position = transform.localPosition;
         
         Debug.Log("Drop the cake!");
+
+        //add checkPoint
+        CheckPointManager.Instance.LoadCheckpoint();
     }
 
     private void OnCollisionEnter(Collision collision)
