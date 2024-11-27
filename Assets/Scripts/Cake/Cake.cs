@@ -7,6 +7,10 @@ public class Cake : MonoBehaviour
     private Rigidbody rb;
     private bool _isCakeDrop;
     public Vector3 dropPosition;
+    public void ResetRigidbody()
+    {
+        rb.velocity = Vector3.zero;
+    }
 
     public bool IsCakeDrop
     {
@@ -40,6 +44,9 @@ public class Cake : MonoBehaviour
         transform.position = transform.localPosition;
         
         Debug.Log("Drop the cake!");
+
+        //add checkPoint
+        CheckPointManager.Instance.LoadCheckpoint();
     }
 
     private void OnCollisionEnter(Collision collision)
