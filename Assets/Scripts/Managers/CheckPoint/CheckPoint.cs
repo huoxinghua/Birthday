@@ -8,7 +8,6 @@ public class CheckPoint : MonoBehaviour
         {
 
             CheckPointManager.Instance.SaveCheckpoint(this.transform.position);
-
         }
     }
 }
